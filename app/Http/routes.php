@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
+//    echo 'Hello World!';
     return view('welcome');
 });
+
+Route::get('user/{name?}', function($name = null) {
+    return 'Hello '. $name;
+});
+Route::get('/', 'ArticleController@index');

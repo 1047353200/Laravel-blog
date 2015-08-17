@@ -1,27 +1,43 @@
-## Laravel PHP Framework
+#Blog Laravel学习项目
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+##安装及环境配置
+- Composer安装Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+    安装：https://getcomposer.org/download/
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+    文档：https://getcomposer.org/doc/
 
-## Official Documentation
+    安装命令：`composer create-project laravel/laravel blog`
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+    Composer究竟有哪些包，你可以直接到这里来看看：
 
-## Contributing
+        https://packagist.org/explore/
+- 开启服务器
+    - php -S localhost:8999 -t public
+    - php artisan serve
+    - 服务器
+- 使用Homestead
+- VirtualBox ： https://www.virtualbox.org/wiki/Downloads
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+- Vagrant ： https://www.vagrantup.com/downloads.html
 
-## Security Vulnerabilities
+- vagrant box add laravel/homestead
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+##路由,视图,控制器工作流程
 
-### License
+- 通常我们需要实现某个功能(或者说新创建一个页面)都是这样的：
+```
+1. 在routes.php中注册路由 ---> 2. 创建对于的控制器 ---> 3. 在控制器中得对于方法加载视图
+```
+- 对应得实际操作大概是这样的：
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+1. Route::get('/','ArticleController@index');
+
+2. php artisan make:controller ArticleController
+
+3. public function index()
+   {
+        return view('articles.lists');
+   }
+```
