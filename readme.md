@@ -1,5 +1,5 @@
 #Blog Laravel学习项目
-
+https://jellybool.com/
 ##安装及环境配置
 - Composer安装Laravel
 
@@ -40,4 +40,26 @@
    {
         return view('articles.lists');
    }
+```
+##视图变量传递和Blade
+    * 向视图中传递变量
+    使用with()方法
+```php
+ public function index()
+    {
+        $title = '文章标题1';
+        return view('articles.lists')->with('title',$title);
+    }
+```
+而在blade引擎中，我们可以这样输出变量：
+```
+html
+<body>
+<h1>{{ $title }}</h1>
+
+</body>
+```
+如果你想将 $title 作为页面元素渲染输出，你需要这样写：
+```
+<h1>{!! $title !!}</h1>
 ```
