@@ -17,7 +17,16 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        return view('article.lists');
+        $title = '文章标题1';
+        $title2 = '<span style="color: red">文章</span>标题1';
+        $title3 = '<span style="color: red">文章</span>标题3';
+        $intro = '文章一的简介';
+
+        $first = 'jelly';
+        $last = 'bool';
+        $third = ['one','two'];
+        $forth = array('three','four');
+        return view('article.lists', compact('title3', 'first', 'last', 'third', 'forth'), ['intro'=>$intro])->with('title', $title)->with('title2', $title2);
     }
 
     /**
